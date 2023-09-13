@@ -1,0 +1,15 @@
+ANIMATIONS
+- enlever les animation rouges et vertes (si elles sont toujours la)
+- plus de random/glitch
+- plus d'éventails
+- plus de circle dance
+- moins d'animations synchrones (carrés, portal, etc)
+
+FONCTIONNALISER & MODULARISER
+- routines.h    --> couleurs élémentaires, formes prédéfinies et controle de vitesse
+- animations.h  --> animations
+- finetune.h    --> reglages fins de la synchro
+
+LONG TERME (pas prioritaire)
+- Revoir le séquencage --> permettre une mise à jour tous les dt (dt < duree_animation) des DMX recus...
+    interrompre les animations pour ce faire
