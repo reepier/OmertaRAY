@@ -1,9 +1,13 @@
+#include <DMXSerial.h>
+
 #define red_pin 3
 #define green_pin 5
 #define blue_pin 6
 #define alim_laser 4
 #define motor_1 10
 #define motor_2 9
+
+int dmx_address = 14;
 
 int fader_sync = A0;
 int fader_mot = A1;
@@ -19,11 +23,23 @@ unsigned long d_anim = 20000; //ms
 unsigned long d_pause = 20000; //ms
 unsigned long d_pause_mini = 2000; //ms 
 
+enum RUN_MODE{
+  DMX,
+  AUTO
+};
+
+RUN_MODE mode;
+
+void auto_show();
+void DMX_show();
+bool no_DMX_connection(){return DMXSerial.noDataSince() > 100;}
 //-----------------------------------------------------------------------------------
 // SETUP
 //-----------------------------------------------------------------------------------
 void setup() {
+  #ifndef DmxSerial_h
   Serial.begin(9600);
+  #endif 
   
   // SET motors (pin 9 10) pwm freq to 32kHz to avoid perceptible harmonics
   // TCCR1B = TCCR1B & B11111000 | B00000001; // set timer 1 divisor to 1 for PWM frequency of 31372.55 Hz
@@ -40,6 +56,9 @@ void setup() {
   pinMode(motor_2, OUTPUT);
   black();
 
+  DMXSerial.init(DMXReceiver);
+  delay(500);
+  mode = no_DMX_connection() ? AUTO : DMX;
   
   //wake_up();
 }
@@ -48,18 +67,33 @@ void setup() {
 // MAIN LOOP
 //---------------------------------------------------------------------------
 void loop() {
-  /*
-  white();
-  set_motor_speed(0,0);
-  while (true){}*/
-  /*
-  analogWrite(green_pin, 30);
-  set_motor_speed(70, 90);
-  while (true){}
-  */
+  if (mode == AUTO){
+    auto_show();
+  }else if (mode == DMX){
+    while (true)
+      DMX_show();
+  }
+}
 
-  
 
+void DMX_show(){
+  uint8_t dmx[5];
+  for (int i=0; i<5; i++){
+    dmx[i] = DMXSerial.read(dmx_address + i);
+  }
+
+  set_motor_speed(dmx[0], dmx[1]);
+  if(dmx[0]<40 && dmx[1]<40){
+    black();
+  }else{
+    analogWrite(red_pin, dmx[2]);
+    analogWrite(green_pin, dmx[3]);
+    analogWrite(blue_pin, dmx[4]);
+  }
+  delay(20);
+}
+
+void auto_show(){
   set_color(2,  2,7); // Green + White
   circle_dance(d_anim*25/20, 5000);
   set_color(2,  2,1); // Green Red
@@ -235,8 +269,7 @@ void loop() {
   set_color(1, 7);
   glitter(d_anim, 1000, 0.7);
   pause(5*d_pause);
-
-  }
+}
 
 
 //---------------------------------------------------------------------------
@@ -672,7 +705,9 @@ void pause(unsigned long duration){
 //---------------------------------------------------------------------------
 void disp_color(){
   for (int i=1; i<=color[0]; i++){
+    #ifndef DmxSerial_h
     Serial.println(color[i]);
+    #endif
   }
 }
 
