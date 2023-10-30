@@ -1,4 +1,4 @@
-Source & versioning strategy :
+Source & versioning strategy (to redefine...):
     - Master branch contains the freshest code (with features in developpment or ready)
     - each V<X>  branch contains a main evolution of the project (major feature(s) added with reagards to V<x-1>)
 
@@ -14,3 +14,4 @@ V6 : PID Motor control with HALL effect sensors & 2 arduinos
 ON this GITHUB REPO :
 V5 : 10 bits Motor Control
 V7 : Dual Mode DMX / AUTO show --> DMX Mode still empty, more to come
+V8 : DMX animation catalogue

@@ -1,8 +1,10 @@
 #pragma once
 
 #include <Arduino.h>
-#include "config.h"
 #include "auto_show.h"
+#include "config.h"
+#include "color.h"
+#include "motor.h"
 
 uint8_t color[9]; // array used to pass color palettes to animation functions
 uint8_t c_temp[8]; // array used to pass secondary colors
@@ -13,7 +15,7 @@ int motor2_speed = 0;
 int fader_sync = A0;
 int fader_mot = A1;
 
-void auto_show(){
+void auto_loop(){
   set_color(2,  2,7); // Green + White
   circle_dance(d_anim*25/20, 5000);
   set_color(2,  2,1); // Green Red
@@ -282,7 +284,17 @@ void glitch(unsigned long duration){
   
   while (millis() - start <= duration){
     black();
-    delay(random(0, 800));
+    delay(random(0, 800));// call color function usng a integer (from 0 to 7)  
+void digital_color(uint8_t color);
+// ELementary color functions
+void black();
+void white();
+void red();
+void green();
+void blue();
+void cyan();
+void magenta();
+void yellow();
     digital_color(color[random(1, color[0])]);
     delay(random(0, 90));
   }

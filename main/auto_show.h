@@ -4,7 +4,7 @@
 
 extern uint8_t color[9]; // array used to pass color palettes to animation functions
 
-void auto_show();
+void auto_loop();
 //---------------------------------------------------------------------------
 // Animations low level
 //---------------------------------------------------------------------------
@@ -35,29 +35,8 @@ float random_walk_capped(float x, float weight, float capmin, float capmax);
 //---------------------------------------------------------------------------
 // Build color vector
 void set_color(uint8_t c_number, uint8_t c0=0,uint8_t c1=0,uint8_t c2=0,uint8_t c3=0,uint8_t c4=0,uint8_t c5=0,uint8_t c6=0,uint8_t c7=0,uint8_t c8=0);
-// call color function usng a integer (from 0 to 7)  
-void digital_color(uint8_t color);
-// ELementary color functions
-void black();
-void white();
-void red();
-void green();
-void blue();
-void cyan();
-void magenta();
-void yellow();
-//---------------------------------------------------------------------------
-// MOTOR SPEED Functions
-//---------------------------------------------------------------------------
-void set_motor_speed(int speed_1, int speed_2);
-void set_shape_ellipse();
-void set_shape_circle();
-void set_shape_atom_7();
-void set_shape_triangle();
-void set_shape_square();
-void STOP();
-void wake_up();
-void pause(unsigned long duration);
+
+
 //---------------------------------------------------------------------------
 // DEBUG & TEST Functions
 //---------------------------------------------------------------------------

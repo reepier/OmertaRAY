@@ -1,16 +1,14 @@
-
-
 #include "auto_show.h"
+#include "dmx_show.h"
 #include "config.h"
-
-int dmx_address = 14;
+#include "motor.h"
+#include "color.h"
 
 enum RUN_MODE{
   DMX,
   AUTO
 };
 RUN_MODE mode;
-void DMX_show();
 bool no_DMX_connection(){return DMXSerial.noDataSince() > 100;}
 //-----------------------------------------------------------------------------------
 // SETUP
@@ -48,30 +46,19 @@ void setup() {
 //---------------------------------------------------------------------------
 void loop() {
   if (mode == AUTO){
-    auto_show();
-  }else if (mode == DMX){
-    while (true)
-      DMX_show();
+    while(true){
+      auto_loop();  //runs the automated sequence indefinitely
+    }
   }
+
+  
+  DMX_loop(); // runs the DMX function
+  
+  
 }
 
  
-void DMX_show(){
-  uint8_t dmx[5];
-  for (int i=0; i<5; i++){
-    dmx[i] = DMXSerial.read(dmx_address + i);
-  }
-  set_motor_speed(dmx[0], dmx[1]);
-  
-  if(dmx[0]<40 && dmx[1]<40){
-    black();
-  }else{
-    analogWrite(red_pin, dmx[2]);
-    analogWrite(green_pin, dmx[3]);
-    analogWrite(blue_pin, dmx[4]);
-  }
-  delay(20);
-}
+
 
 
 
