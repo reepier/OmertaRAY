@@ -8,7 +8,7 @@
 #define motor_1 10
 #define motor_2 9
 
-#define d_anim 20000        //ms
+#define d_anim 5000        //ms
 
 #define d_pause 20000       //ms
 #define d_pause_mini 2000   //ms 
