@@ -55,7 +55,7 @@ void loop() {
   }
 }
 
-
+ 
 void DMX_show(){
   uint8_t dmx[5];
   for (int i=0; i<5; i++){

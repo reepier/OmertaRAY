@@ -564,7 +564,7 @@ void magenta(){
   digitalWrite(red_pin, HIGH);
   digitalWrite(green_pin, LOW);
   digitalWrite(blue_pin, HIGH);
-}
+} 
 void yellow(){
   digitalWrite(red_pin, HIGH);
   digitalWrite(green_pin, HIGH);
