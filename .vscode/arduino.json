@@ -3,5 +3,5 @@
     "board": "arduino:avr:nano",
     "programmer": "usbasp",
     "sketch": "main/main.ino",
-    "port": "/dev/ttyUSB2"
+    "port": "/dev/ttyUSB3"
 }

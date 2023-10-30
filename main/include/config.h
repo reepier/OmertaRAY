@@ -8,9 +8,9 @@
 #define motor_1 10
 #define motor_2 9
 
-#define d_anim 5000        //ms
+#define d_anim (unsigned long)20000        //ms
 
-#define d_pause 20000       //ms
-#define d_pause_mini 2000   //ms 
+#define d_pause (unsigned long)20000       //ms
+#define d_pause_mini (unsigned long)2000   //ms 
 
 #define dmx_address 14  
