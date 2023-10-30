@@ -1,10 +1,10 @@
 #pragma once
 
 #include <Arduino.h>
-#include "auto_show.h"
-#include "config.h"
-#include "color.h"
-#include "motor.h"
+#include "../include/auto_show.h"
+#include "../include/config.h"
+#include "../include/color.h"
+#include "../include/motor.h"
 
 uint8_t color[9]; // array used to pass color palettes to animation functions
 uint8_t c_temp[8]; // array used to pass secondary colors

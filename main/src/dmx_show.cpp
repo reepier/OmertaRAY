@@ -1,9 +1,9 @@
 #include <Arduino.h>
 #include <DMXSerial.h>
 
-#include "config.h"
-#include "motor.h"
-#include "color.h"
+#include "../include/config.h"
+#include "../include/motor.h"
+#include "../include/color.h"
 
 void DMX_loop(){
   uint8_t dmx[5];

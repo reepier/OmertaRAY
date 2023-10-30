@@ -1,8 +1,8 @@
-#include "auto_show.h"
-#include "dmx_show.h"
-#include "config.h"
-#include "motor.h"
-#include "color.h"
+#include "include/auto_show.h"
+#include "include/dmx_show.h"
+#include "include/config.h"
+#include "include/motor.h"
+#include "include/color.h"
 
 enum RUN_MODE{
   DMX,
