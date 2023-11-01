@@ -30,7 +30,7 @@ void setup() {
   // digitalWrite(alim_laser, HIGH);
   pinMode(motor_1, OUTPUT);
   pinMode(motor_2, OUTPUT);
-  black();
+  set_black();
 
   DMXSerial.init(DMXReceiver);
   delay(500);

@@ -214,7 +214,7 @@ void glitter(unsigned long duration, int period, float alpha){
      set_motor_speed(180,230);
      ribbon(period*alpha, 4000);
      
-     black();
+     set_black();
      set_motor_speed(50,50);
      delay((int)(period*(1-alpha)));
      
@@ -284,18 +284,18 @@ void glitch(unsigned long duration){
   uint8_t i = 1;
   
   while (millis() - start <= duration){
-    black();
+    set_black();
     delay(random(0, 800));// call color function usng a integer (from 0 to 7)  
 void digital_color(uint8_t color);
 // ELementary color functions
-void black();
-void white();
-void red();
-void green();
-void blue();
-void cyan();
-void magenta();
-void yellow();
+void set_black();
+void set_white();
+void set_red();
+void set_green();
+void set_blue();
+void set_cyan();
+void set_magenta();
+void set_yellow();
     digital_color(color[random(1, color[0])]);
     delay(random(0, 90));
   }
@@ -324,7 +324,7 @@ void portal_dance(unsigned long duration, unsigned long period){
         set_color(7, c_temp[i] ,c_temp[i] ,c_temp[i] ,0 ,0 ,0 ,0);
         set_shape_circle();
         ribbon(period, 8150);
-        black();
+        set_black();
         set_motor_speed(150,255);
         delay(200);
         if (i<ncolor-1){
@@ -345,7 +345,7 @@ void palm_dance(unsigned long duration){
   set_motor_speed(50, 68);
   while(millis()-start<=duration){
     ribbon(100, 3000);
-    black();
+    set_black();
     delay(500);
   }
 }
@@ -357,20 +357,20 @@ void circle_dance(unsigned long duration, unsigned long period){
   while(millis()<= start+duration){
   
     if (cpt%2==0){
-      set_motor_speed(200, 15);
+      set_motor_speed(180, 15);
     }
     else{
-      set_motor_speed(15, 150);
+      set_motor_speed(15, 180);
     }
     
     digital_color(color[i]);
     delay(period);
     
     if (cpt%2==0){
-      set_motor_speed(200, 255);
+      set_motor_speed(180, 255);
     }
     else{
-      set_motor_speed(255, 150);
+      set_motor_speed(255, 180);
     }
     delay(200);
     
@@ -476,10 +476,10 @@ void ribbon_analog(unsigned long duration, float dcr, float dcg, float dcb, int 
   }
 
   float m = 10;
-  if(pr>m*pg && pr>m*pb){red();}
-  else if(pg>m*pr && pg>m*pb){green();}
-  else if(pb>m*pr && pb>m*pg){blue();}
-  else{black();}
+  if(pr>m*pg && pr>m*pb){set_red();}
+  else if(pg>m*pr && pg>m*pb){set_green();}
+  else if(pb>m*pr && pb>m*pg){set_blue();}
+  else{set_black();}
 }
 
 //---------------------------------------------------------------------------
@@ -523,62 +523,62 @@ void set_color(uint8_t c_number, uint8_t c0=0,uint8_t c1=0,uint8_t c2=0,uint8_t 
 // call color function usng a integer (from 0 to 7)  
 void digital_color(uint8_t color){
   switch (color){
-    case 0: black();
+    case 0: set_black();
     break;
-    case 1: red();
+    case 1: set_red();
     break;
-    case 2: green();
+    case 2: set_green();
     break;
-    case 3: blue();
+    case 3: set_blue();
     break;
-    case 4: yellow();
+    case 4: set_yellow();
     break;
-    case 5: cyan();
+    case 5: set_cyan();
     break;
-    case 6: magenta();
+    case 6: set_magenta();
     break;
-    case 7: white();
+    case 7: set_white();
     break;
   }
 }
 }
 // ELementary color functions
-void black(){
+void set_black(){
   digitalWrite(red_pin, LOW);
   digitalWrite(green_pin, LOW);
   digitalWrite(blue_pin, LOW);
 }
-void white(){
+void set_white(){
   digitalWrite(red_pin, HIGH);
   digitalWrite(green_pin, HIGH);
   digitalWrite(blue_pin, HIGH);
 }
-void red(){
+void set_red(){
   digitalWrite(red_pin, HIGH);
   digitalWrite(green_pin, LOW);
   digitalWrite(blue_pin, LOW);
 }
-void green(){
+void set_green(){
   digitalWrite(red_pin, LOW);
   digitalWrite(green_pin, HIGH);
   digitalWrite(blue_pin, LOW);
 }
-void blue(){
+void set_blue(){
   digitalWrite(red_pin, LOW);
   digitalWrite(green_pin, LOW);
   digitalWrite(blue_pin, HIGH);
 }
-void cyan(){
+void set_cyan(){
   digitalWrite(red_pin, LOW);
   digitalWrite(green_pin, HIGH);
   digitalWrite(blue_pin, HIGH);
 }
-void magenta(){
+void set_magenta(){
   digitalWrite(red_pin, HIGH);
   digitalWrite(green_pin, LOW);
   digitalWrite(blue_pin, HIGH);
 } 
-void yellow(){
+void set_yellow(){
   digitalWrite(red_pin, HIGH);
   digitalWrite(green_pin, HIGH);
   digitalWrite(blue_pin, LOW);
@@ -613,14 +613,14 @@ void set_shape_square(){
 }
 
 void STOP(){
-  black();
+  set_black();
   set_motor_speed(0,0);
 }
 
 
 void pause(unsigned long duration){
   set_motor_speed(80,80);
-  black();
+  set_black();
   delay(duration);
 }
 
