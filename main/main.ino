@@ -19,11 +19,9 @@ void setup() {
   #endif 
 
   
-  // SET motors (pin 9 10) pwm freq to 32kHz to avoid perceptible harmonics
-  // TCCR1B = TCCR1B & B11111000 | B00000001; // set timer 1 divisor to 1 for PWM frequency of 31372.55 Hz
-  // Pins D9 and D10 - 15.6 kHz 10bit
+  // Timer1 (Pins D9 and D10) - 15.6 kHz 10bit
   TCCR1A = 0b00000011; // 10bit
-  TCCR1B = 0b00001001; // x1 fast pwm
+  TCCR1B = 0b00001001; // 15.6 kHz
 
   pinMode(red_pin, OUTPUT);
   pinMode(green_pin, OUTPUT);
@@ -53,8 +51,6 @@ void loop() {
 
   
   DMX_loop(); // runs the DMX function
-  
-  
 }
 
  
