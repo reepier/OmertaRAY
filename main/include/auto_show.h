@@ -1,9 +1,9 @@
 #pragma once
 
 #include "config.h"
+namespace AUTO{
 
 extern uint8_t color[9]; // array used to pass color palettes to animation functions
-
 void auto_loop();
 //---------------------------------------------------------------------------
 // Animations low level
@@ -30,20 +30,15 @@ void ribbon_analog(unsigned long duration, float dcr, float dcg, float dcb, int 
 //---------------------------------------------------------------------------
 float random_walk(float x, float weight, float amp);
 float random_walk_capped(float x, float weight, float capmin, float capmax);
+
 //---------------------------------------------------------------------------
 // COLORS DEFINITION
 //---------------------------------------------------------------------------
 // Build color vector
 void set_color(uint8_t c_number, uint8_t c0=0,uint8_t c1=0,uint8_t c2=0,uint8_t c3=0,uint8_t c4=0,uint8_t c5=0,uint8_t c6=0,uint8_t c7=0,uint8_t c8=0);
+// call color function usng a integer (from 0 to 7)  
+void digital_color(uint8_t color);}
 
-
-//---------------------------------------------------------------------------
-// DEBUG & TEST Functions
-//---------------------------------------------------------------------------
-void disp_color();
-// show color vector (test purpose)
-void palette(uint8_t c_number);
-void palette();
 //---------------------------------------------------------------------------
 // Timer correction Functions
 //---------------------------------------------------------------------------

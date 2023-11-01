@@ -5,8 +5,8 @@
 #include "include/color.h"
 
 enum RUN_MODE{
-  DMX,
-  AUTO
+  dmx,
+  automat
 };
 RUN_MODE mode;
 bool no_DMX_connection(){return DMXSerial.noDataSince() > 100;}
@@ -34,7 +34,7 @@ void setup() {
 
   DMXSerial.init(DMXReceiver);
   delay(500);
-  mode = no_DMX_connection() ? AUTO : DMX;
+  mode = no_DMX_connection() ? automat : dmx;
   
   //wake_up();
 }
@@ -43,14 +43,14 @@ void setup() {
 // MAIN LOOP
 //---------------------------------------------------------------------------
 void loop() {
-  if (mode == AUTO){
+  if (mode == automat){
     while(true){
-      auto_loop();  //runs the automated sequence indefinitely
+      AUTO::auto_loop();  //runs the automated sequence indefinitely
     }
   }
 
   
-  DMX_loop(); // runs the DMX function
+  DMX::DMX_loop(); // runs the DMX function
 }
 
  

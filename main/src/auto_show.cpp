@@ -6,14 +6,15 @@
 #include "../include/color.h"
 #include "../include/motor.h"
 
-uint8_t color[9]; // array used to pass color palettes to animation functions
-uint8_t c_temp[8]; // array used to pass secondary colors
-
 int motor1_speed = 0;
 int motor2_speed = 0;
 
 int fader_sync = A0;
 int fader_mot = A1;
+
+namespace AUTO{
+uint8_t color[9]; // array used to pass color palettes to animation functions
+uint8_t c_temp[8]; // array used to pass secondary colors
 
 void auto_loop(){
   set_color(2,  2,7); // Green + White
@@ -540,7 +541,7 @@ void digital_color(uint8_t color){
     break;
   }
 }
-
+}
 // ELementary color functions
 void black(){
   digitalWrite(red_pin, LOW);
@@ -616,45 +617,11 @@ void STOP(){
   set_motor_speed(0,0);
 }
 
-void wake_up(){
-  set_color(8, 1,2,3,4,5,6,7,7);
-  zbeul(20000);
-  STOP();
-  set_motor_speed(200,200);
-  white();
-  delay(20000);
-  STOP();
-  delay(5000);
-}
 
 void pause(unsigned long duration){
   set_motor_speed(80,80);
   black();
   delay(duration);
-}
-
-//---------------------------------------------------------------------------
-// DEBUG & TEST Functions 
-//---------------------------------------------------------------------------
-void disp_color(){
-  for (int i=1; i<=color[0]; i++){
-    #ifndef DmxSerial_h
-    Serial.println(color[i]);
-    #endif
-  }
-}
-
-// show color vector (test purpose)
-void palette(uint8_t c_number){
-  for (int i=0; i<c_number; ++i){
-    digital_color(color[i]);
-    delay(1000);
-  }
-}void palette(){
-  for (int i=1; i<=color[0]; ++i){
-    digital_color(color[i]);
-    delay(1000);
-  }
 }
 
 //---------------------------------------------------------------------------

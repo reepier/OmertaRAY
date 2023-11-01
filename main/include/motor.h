@@ -10,5 +10,4 @@ void set_shape_atom_7();
 void set_shape_triangle();
 void set_shape_square();
 void STOP();
-void wake_up();
 void pause(unsigned long duration);

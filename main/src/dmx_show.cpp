@@ -5,6 +5,8 @@
 #include "../include/motor.h"
 #include "../include/color.h"
 
+namespace DMX{
+
 struct LaserData{
   uint8_t motor1;
   uint8_t motor2;
@@ -83,3 +85,8 @@ void DMX_loop(){
 
 
 // Built-in FUNCTIONS :
+
+
+
+
+}
