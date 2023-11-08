@@ -17,11 +17,11 @@ uint8_t color[9]; // array used to pass color palettes to animation functions
 uint8_t c_temp[8]; // array used to pass secondary colors
 
 void auto_loop(){
-  set_color(2,  2,7); // Green + White
-  circle_dance(d_anim*25/20, 5000);
-  set_color(2,  2,1); // Green Red
-  circle_dance(d_anim*25/20, 3000);
-  pause(d_pause_mini);
+  // set_color(2,  2,7); // Green + White
+  // circle_dance(d_anim*25/20, 5000);
+  // set_color(2,  2,1); // Green Red
+  // circle_dance(d_anim*25/20, 3000);
+  // pause(d_pause_mini);
   
   set_color(8, 7,0,7,0,7,0,7,0);
   whip(d_anim, 20000);
@@ -238,7 +238,7 @@ void zbeul(unsigned long duration){
 }
 
 void whip(unsigned long duration, int period){
-  set_motor_speed(50,43);
+  set_motor_speed(50,45);
   ribbon(duration, period);
 }
 void whip_ellipse(unsigned long duration, int period){
@@ -286,16 +286,6 @@ void glitch(unsigned long duration){
   while (millis() - start <= duration){
     set_black();
     delay(random(0, 800));// call color function usng a integer (from 0 to 7)  
-void digital_color(uint8_t color);
-// ELementary color functions
-void set_black();
-void set_white();
-void set_red();
-void set_green();
-void set_blue();
-void set_cyan();
-void set_magenta();
-void set_yellow();
     digital_color(color[random(1, color[0])]);
     delay(random(0, 90));
   }
@@ -541,7 +531,10 @@ void digital_color(uint8_t color){
     break;
   }
 }
-}
+
+
+}// end of namespace AUTO::
+
 // ELementary color functions
 void set_black(){
   digitalWrite(red_pin, LOW);
