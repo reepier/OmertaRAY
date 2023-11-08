@@ -186,33 +186,33 @@ void DMX_loop(){
       break;
     case 23:
       palette.push_back(white);
-      palette.push_back(magenta);
+      palette.push_back(yellow);
       glitch();
       break;
     case 24:
       palette.push_back(white);
-      palette.push_back(yellow);
+      palette.push_back(cyan);
       glitch();
       break;
     case 25	:
       palette.push_back(white);
-      palette.push_back(cyan);
+      palette.push_back(magenta);
       glitch();
       break;
     case 26	:
-      palette.push_back(white);
-      glitch();
-      break;
-    case 27	:
       palette.push_back(red);
       glitch();
       break;
-    case 28	:
+    case 27	:
       palette.push_back(green);
       glitch();
       break;
-    case 29	:
+    case 28	:
       palette.push_back(blue);
+      glitch();
+      break;
+    case 29	:
+      palette.push_back(yellow);
       glitch();
       break;
     case 30	:
@@ -224,7 +224,7 @@ void DMX_loop(){
       glitch();
       break;
     case 32	:
-      palette.push_back(yellow);
+      palette.push_back(white);
       glitch();
       break;
     case 33	:
@@ -279,61 +279,69 @@ void DMX_loop(){
       
       break;
     case 50	:
-      
+      palette.push_back(white);
+      palette.push_back(red);
+      palm_dance();
       break;
     case 51	:
       palette.push_back(white);
-      palette.push_back(red);
+      palette.push_back(green);
       palm_dance();
       break;
     case 52	:
       palette.push_back(white);
-      palette.push_back(green);
+      palette.push_back(blue);
       palm_dance();
       break;
     case 53	:
       palette.push_back(white);
-      palette.push_back(blue);
+      palette.push_back(yellow);
       palm_dance();
       break;
     case 54	:
       palette.push_back(white);
-      palette.push_back(black);
+      palette.push_back(cyan);
       palm_dance();
       break;
     case 55	:
       palette.push_back(red);
-      palette.push_back(black);
+      palette.push_back(magenta);
       palm_dance();
       break;
     case 56	:
-      palette.push_back(green);
+      palette.push_back(red);
       palette.push_back(black);
       palm_dance();
       break;
     case 57	:
-      palette.push_back(yellow);
+      palette.push_back(green);
       palette.push_back(black);
       palm_dance();
       break;
     case 58	:
-      palette.push_back(magenta);
+      palette.push_back(blue);
       palette.push_back(black);
       palm_dance();
       break;
     case 59	:
-      palette.push_back(cyan);
+      palette.push_back(yellow);
       palette.push_back(black);
       palm_dance();
       break;
     case 60	:
-      
+      palette.push_back(cyan);
+      palette.push_back(black);
+      palm_dance();
       break;
     case 61	:
-      
+      palette.push_back(magenta);
+      palette.push_back(black);
+      palm_dance();
       break;
     case 62	:
-      
+      palette.push_back(white);
+      palette.push_back(black);
+      palm_dance();
       break;
     case 63	:
       

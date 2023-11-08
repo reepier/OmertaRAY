@@ -17,11 +17,11 @@ uint8_t color[9]; // array used to pass color palettes to animation functions
 uint8_t c_temp[8]; // array used to pass secondary colors
 
 void auto_loop(){
-  // set_color(2,  2,7); // Green + White
-  // circle_dance(d_anim*25/20, 5000);
-  // set_color(2,  2,1); // Green Red
-  // circle_dance(d_anim*25/20, 3000);
-  // pause(d_pause_mini);
+  set_color(2,  2,7); // Green + White
+  circle_dance(d_anim*25/20, 5000);
+  set_color(2,  2,1); // Green Red
+  circle_dance(d_anim*25/20, 3000);
+  pause(d_pause_mini);
   
   set_color(8, 7,0,7,0,7,0,7,0);
   whip(d_anim, 20000);
